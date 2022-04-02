@@ -1,10 +1,22 @@
+<!-- https://miinsta.herokuapp.com/ -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{% block title %}Instagram{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'el_galleria/styles/base_styles.css' %}">
+    {% block styling_links %}
+
+    {% endblock %}
 </head>
 <body>
+    {% block navbar %}
+
+    {% endblock %}
+    {% block content %}
+
+    {% endblock %}
 
 </body>
 </html>
