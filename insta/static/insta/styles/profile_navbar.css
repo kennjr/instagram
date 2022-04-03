@@ -1,0 +1,17 @@
+.profile_navbar_container{
+    display: flex;
+    flex-direction: row;
+    padding: 2vh 5vw;
+    background-color: #fff;
+}
+
+#profile_navbar_username_txt{
+    color: #000;
+    font-size: 18px;
+    margin-left: 2vw;
+    font-weight: 550;
+}
+
+.profile_navbar_container > img{
+    padding: 1vh 0.5vw;
+}
