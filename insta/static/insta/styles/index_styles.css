@@ -1,0 +1,32 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.home_container{
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+}
+
+.activity_container{
+    border-radius: 4px;
+    border-style: solid;
+    border-color: #a6a6a6;
+    border-width: 1.5px;
+    margin-right: 2vw;
+    margin-top: 1.5vh;
+}
+
+.title_container{
+    padding-top: .01vh;
+    padding-bottom: 0.01vh;
+    padding-right: 1.25vw;
+    padding-left: 1.25vw;
+    background-color: #e6e6e6;
+    color: #333;
+    font-weight: 600;
+}
+
+.activity_content{
+    padding-right: 1.25vw;
+    padding-left: 1.25vw;
+}
