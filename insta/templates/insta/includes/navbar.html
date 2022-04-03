@@ -1,10 +1,14 @@
+{% load static %}
 <div class="navbar_container">
     <div class="nav_home_container">
         <img class="nav_home_img" src="/static/insta/images/ic_instagram_logo_img.png" alt="Navigate home">
         <img class="nav_home_txt_img" src="/static/insta/images/ic_instagram_logo_txt.png" alt="Navigate home">
     </div>
     <div class="nav_search_container">
-        <input class="search_field" name="search_str" type="text" placeholder="Search...">
+        <form method="GET" action="{% url 'search' %}">
+            <!-- We don't need a csrf token since this is a get req -->
+            <input class="search_field" name="q" type="text" placeholder="Search...">
+        </form>
     </div>
     <div class="nav_opts_container">
         <img class="profile_img" src="https://getwallpapers.com/wallpaper/full/3/4/2/1275428-widescreen-super-cool-backgrounds-1920x1200.jpg" alt="Navigate to [rofile">
