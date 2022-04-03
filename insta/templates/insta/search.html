@@ -1,0 +1,45 @@
+{% extends 'insta/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if title %}
+      {{title}}
+    {% else %}
+      Instagram
+    {% endif %}
+{% endblock %}
+
+{% block styling_links %}
+    <link rel="stylesheet" href="{% static 'insta/styles/navbar_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/search_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/post_item_styles.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'insta/includes/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="search_container">
+        <div class="filters_container">
+            <div class="title_container">
+                <p>Filters</p>
+            </div>
+            <div class="filters_content">
+                <!-- todo Add onclicks for both the filter items -->
+                <div class="filter_item_container">
+                    <p>Users</p>
+                    <p class="filter_item_count">5</p>
+                </div>
+                <div class="divider"></div>
+                <div class="filter_item_container">
+                    <p>Posts</p>
+                    <p class="filter_item_count">2</p>
+                </div>
+            </div>
+        </div>
+        <div class="results_container">
+            {% include 'insta/includes/post_item.html' %}
+        </div>
+    </div>
+{% endblock %}
