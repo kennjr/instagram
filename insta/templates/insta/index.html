@@ -1,10 +1,38 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'insta/base/base.html' %}
+{% load static %}
 
-</body>
-</html>
+{% block title %}
+    {% if title %}
+      {{title}}
+    {% else %}
+      Instagram
+    {% endif %}
+{% endblock %}
+
+{% block styling_links %}
+    <link rel="stylesheet" href="{% static 'insta/styles/navbar_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/index_styles.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'insta/includes/navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="home_container">
+        <div class="posts_container">
+
+        </div>
+        <div class="activity_container">
+            <div class="title_container">
+                <p>Activity</p>
+            </div>
+            <div class="activity_content">
+                <p>Some activity</p>
+                <p>Some activity</p>
+                <p>Some activity</p>
+                <p>Some activity</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
