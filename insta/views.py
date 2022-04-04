@@ -20,3 +20,10 @@ def search(request):
         is_req_empty = False
     context = {'title': title}
     return render(request, 'insta/search.html', context)
+
+
+def profile(request, uid):
+    # todo Get title of page from the user details
+    my_range = range(0, 9)
+    context = {"title": "placeholder", 'my_range':my_range}
+    return render(request, 'insta/profile.html', context)
