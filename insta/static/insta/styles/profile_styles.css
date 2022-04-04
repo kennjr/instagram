@@ -1,0 +1,75 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.profile_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile_user_info_sect{
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    justify-content: center;
+    padding-bottom: 2vw;
+}
+
+.main_profile_img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    justify-self: center;
+}
+
+.profile_username_container{
+    display: flex;
+    flex-direction: row;
+}
+
+#profile_username_txt{
+    text-overflow: ellipsis;
+    max-width: 40ch;
+    white-space: nowrap;
+    overflow: hidden;
+    align-self: center;
+    font-size: 18px;
+    margin-right: 1.25vw;
+}
+
+.txt_btn{
+    background-color: #e6e6e6;
+    padding: 0.75vh 1.25vw;
+    font-size: 15px;
+    border-radius: 3px;
+    border-width: 1px;
+    border-color: #737373;
+    border-style: solid;
+}
+
+.txt_btn:hover{
+    cursor: pointer;
+    scale: 1.025;
+}
+
+#profile_user_stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+#profile_user_stats > p{
+    text-align: start;
+}
+
+#profile_user_bio_txt{
+    padding-right: 5vw;
+}
+
+.profile_user_gallery_sect{
+    height: 100%;
+    width: 80%;
+    padding-bottom: 2vh;
+}

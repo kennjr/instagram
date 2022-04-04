@@ -1,0 +1,45 @@
+{% extends 'insta/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if title %}
+      {{title}}
+    {% else %}
+      Instagram
+    {% endif %}
+{% endblock %}
+
+{% block styling_links %}
+    <link rel="stylesheet" href="{% static 'insta/styles/profile_navbar.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/profile_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/post_item_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/gallery_grid_styles.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'insta/includes/profile_navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="profile_container">
+        <div class="profile_user_info_sect">
+            <img class="main_profile_img" src="https://getwallpapers.com/wallpaper/full/3/4/2/1275428-widescreen-super-cool-backgrounds-1920x1200.jpg" alt="User's profile image">
+            <div class="profile_details_container">
+                <div class="profile_username_container">
+                    <p id="profile_username_txt">TheUser1 dwnxnwjnjxnnNXNIjifjeojquinufncqNUINNWcnwnacunawNUIIQNFENNNSmncwjwqhbcjbBW</p>
+                    <P class="txt_btn">Edit Profile</P>
+                </div>
+                <div id="profile_user_stats">
+                    <p>2 posts</p>
+                    <p>29 followers</p>
+                    <p>13 following</p>
+                </div>
+                <p id="profile_user_bio_txt">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dolor sit amet consectetur adipiscing elit pellentesque habitant. Nullam eget felis eget nunc lobortis mattis aliquam faucibus purus. Tristique senectus et netus et malesuada fames.</p>
+                <p id="profile_user_website_txt"><a href="https://www.regalopus.com">www.regalopus.com</a></p>
+            </div>
+        </div>
+        <div class="profile_user_gallery_sect">
+            {% include 'insta/includes/gallery_grid.html' %}
+        </div>
+    </div>
+{% endblock %}
