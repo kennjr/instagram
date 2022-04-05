@@ -111,3 +111,23 @@
 .post_action_opts_container > img:hover{
     cursor: pointer;
 }
+
+button{
+    width: 100%;
+    padding: 0.5vh 1vw;
+    margin-right: 1vw;
+    /*background-color: #4d79ff;*/
+    background-color: #fff;
+    outline: none;
+    border-width: 0px;
+    border-radius: 3px;
+    font-size: medium;
+    color: #4d79ff;
+    display: block;
+    margin: 3vh 0;
+}
+
+button:hover{
+    background-color: rgba(191, 191, 191, 0.3);
+    cursor: pointer;
+}
