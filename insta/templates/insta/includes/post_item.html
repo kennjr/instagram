@@ -3,17 +3,19 @@
         <div class="post_user_info_container">
             <img src="/static/insta/images/ic_account_circle.svg" alt="View creator's account">
             <div class="post_user_text_info_container">
-                <p class="post_user_username_txt">kennjr</p>
-                <p class="post_user_location_txt">Yo Bih's hse.</p>
+                <p class="post_user_username_txt">{{post_item.user.username}}</p>
+                <p class="post_user_location_txt">{{post_item.location}}</p>
             </div>
         </div>
-        <form method="POST" action="">
-            {% csrf_token %}
-            <button type="submit">Follow</button>
-        </form>
+        {% if request.user != post_item.user %}
+            <form method="POST" action="">
+                {% csrf_token %}
+                <button type="submit">Follow</button>
+            </form>
+        {% endif %}
     </div>
     <div class="post_mid_sect">
-        <img src="https://st.hotrod.com/uploads/sites/21/2016/01/05-fiery-drag.jpg" alt="Creator's post">
+        <img src="http://127.0.0.1:8000{{post_item.image_url}}" alt="Creator's post">
     </div>
     <div class="post_bottom_sect">
         <div class="post_action_opts_container">
@@ -21,8 +23,8 @@
             <img src="/static/insta/images/ic_chat.svg" alt="View post's comments">
         </div>
         <p class="post_likes_txt"><strong>1297</strong> Likes</p>
-        <p class="post_created_at_txt">25th Jul '20</p>
-        <p class="post_caption_txt"><strong>kennjr:</strong> Can't get too close the drip contagious <(:`^`:)></p>
+        <p class="post_created_at_txt">{{post_item.created}}</p>
+        <p class="post_caption_txt"><strong>{{post_item.user.username}}</strong> {{post_item.caption}}</p>
 
     </div>
 </div>

@@ -1,0 +1,50 @@
+{% extends 'insta/base/base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if title %}
+      {{title}}
+    {% else %}
+      Instagram
+    {% endif %}
+{% endblock %}
+
+{% block styling_links %}
+    <link rel="stylesheet" href="{% static 'insta/styles/view_post_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/profile_navbar.css' %}">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'insta/includes/profile_navbar.html' %}
+{% endblock %}
+
+{% block content %}
+    <div class="view_post_container">
+        <div class="view_post_img_container">
+            <img src="https://images6.alphacoders.com/307/thumb-1920-307836.jpg" alt="Creator's post">
+        </div>
+        <div class="view_post_details_container">
+            <div id="comments_container">
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+                <p>nibh tortor id aliquet.</p>
+            </div>
+            <form id="comment_form" method="POST" action="">
+                {% csrf_token %}
+                <input type="text" placeholder="Comment..." name="comment_field" required>
+                <button type="submit">POST</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

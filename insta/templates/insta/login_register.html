@@ -21,13 +21,20 @@
     {% if auth_req == 'register' %}
         <div class="auth_form_container">
             <div class="main_form_card">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message_container">
+                            <p>{{message}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <img src="/static/insta/images/ic_instagram_logo_txt.png" alt="Instagram logo">
-                <form method="POST" action="/register_page">
+                <form method="POST" action="{% url 'register_page' %}">
                     {% csrf_token %}
-                    <input type="text" placeholder="Email" name="identifier_field">
+                    <input type="email" placeholder="Email" name="email_field">
                     <input type="text" placeholder="Name" name="name_field">
                     <input type="text" placeholder="Username" name="username_field">
-                    <input type="password" placeholder="Password" name="password">
+                    <input type="password" placeholder="Password" name="password_field">
                     <button type="submit">Sign up</button>
                 </form>
             </div>
@@ -38,11 +45,18 @@
     {% else %}
         <div class="auth_form_container">
             <div class="main_form_card">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message_container">
+                            <p>{{message}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <img src="/static/insta/images/ic_instagram_logo_txt.png" alt="Instagram logo">
-                <form method="POST" action="/login">
+                <form method="POST" action="{% url 'login_page' %}">
                     {% csrf_token %}
                     <input type="text" placeholder="Email or Username" name="identifier_field" required>
-                    <input type="password" placeholder="Password" name="password" required>
+                    <input type="password" placeholder="Password" name="password_field" required>
                     <button type="submit">Log in</button>
                 </form>
             </div>

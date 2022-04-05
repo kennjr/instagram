@@ -12,6 +12,7 @@
 {% block styling_links %}
     <link rel="stylesheet" href="{% static 'insta/styles/navbar_styles.css' %}">
     <link rel="stylesheet" href="{% static 'insta/styles/index_styles.css' %}">
+    <link rel="stylesheet" href="{% static 'insta/styles/post_item_styles.css' %}">
 {% endblock %}
 
 {% block navbar %}
@@ -21,18 +22,22 @@
 {% block content %}
     <div class="home_container">
         <div class="posts_container">
-
+            {% for post in posts %}
+                {% include 'insta/includes/post_item.html' with post_item=post %}
+            {% endfor %}
         </div>
-        <div class="activity_container">
-            <div class="title_container">
-                <p>Activity</p>
-            </div>
-            <div class="activity_content">
-                <p>Some activity</p>
-                <p>Some activity</p>
-                <p>Some activity</p>
-                <p>Some activity</p>
-            </div>
+        <div class="activity_ocontainer">
+            {% if mode == 'browse' %}
+                <div class="title_container">
+                    <p>Activity</p>
+                </div>
+                <div class="activity_content">
+                    <p>Some activity</p>
+                    <p>Some activity</p>
+                    <p>Some activity</p>
+                    <p>Some activity</p>
+                </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}

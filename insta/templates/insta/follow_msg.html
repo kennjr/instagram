@@ -1,0 +1,29 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+        <title>{{title}}</title>
+    {% else %}
+        <title>Follow request response</title>
+    {% endif %}
+    <link rel="stylesheet" href="{% static 'insta/styles/follow_msg_styles.css' %}">
+</head>
+<body>
+
+    <div class="card_container">
+        <h4>New Post</h4>
+        <p>{{file_url}}</p>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="upload" accept="image/*" placeholder="Image" required>
+            <input class="reg_input" type="text" placeholder="Caption" name="caption_field" required>
+            <input class="reg_input" type="text" placeholder="Location" name="location_field">
+            <button type="submit">Post</button>
+        </form>
+    </div>
+
+</body>
+</html>
