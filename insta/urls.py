@@ -10,5 +10,6 @@ urlpatterns = [
     path('search/', views.search, name='search'),
     path('posts/<int:post_id>/', views.post_page, name='post_page'),
     path('users/<int:uid>/', views.profile, name='profile'),
+    path('user/', views.user_page, name='user'),
     path('new_post/', views.new_post, name='new_post')
 ]

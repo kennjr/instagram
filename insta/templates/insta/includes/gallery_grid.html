@@ -1,7 +1,8 @@
 <div class="gallery">
-    {% for gallery_item in my_range %}
+    {% for gallery_item in posts %}
         <div class="gallery_item">
-            <img class="gallery_img" src="https://images6.alphacoders.com/307/thumb-1920-307836.jpg" alt="gallery image">
+            <img class="gallery_img" src="https://miinsta.herokuapp.com{{gallery_item.image_url}}" alt="gallery image">
+            <p>{{gallery_item.image_url}}</p>
         </div>
     {% endfor %}
 

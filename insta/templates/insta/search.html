@@ -27,19 +27,28 @@
             </div>
             <div class="filters_content">
                 <!-- todo Add onclicks for both the filter items -->
-                <div class="filter_item_container">
+                <div class="filter_item_container" >
                     <p>Users</p>
-                    <p class="filter_item_count">5</p>
+                    <p class="filter_item_count">{{posts_count}}</p>
                 </div>
                 <div class="divider"></div>
-                <div class="filter_item_container">
+                <div class="filter_item_container" >
                     <p>Posts</p>
-                    <p class="filter_item_count">2</p>
+                    <p class="filter_item_count">{{posts_count}}</p>
                 </div>
             </div>
         </div>
         <div class="results_container">
-            {% include 'insta/includes/post_item.html' %}
+            {% if is_req_empty %}
+
+            {% else %}
+
+                    {% for post in posts_results %}
+                        {% include 'insta/includes/post_item.html' with post_item=post %}
+                    {% endfor %}
+
+            {% endif %}
+
         </div>
     </div>
 {% endblock %}

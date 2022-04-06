@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout, get_user
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
+from django.db.models import Q
 from django.shortcuts import render, redirect
 
 
@@ -44,23 +45,57 @@ def new_post(request):
 
 @login_required(login_url='/login')
 def search(request):
+    search_filter = 'posts'
+
     title = 'Instagram - Home'
     search_req = request.GET.get('q') if request.GET.get('q') is not None else ''
 
     if search_req == '':
         is_req_empty = True
+        users = None
+        posts = None
+        users_count = 0
+        posts_count = 0
     else:
+        # Check for the filter
+        if search_filter == "posts":
+            posts = Post.objects.filter(
+                Q(user__username__icontains=search_req) |
+                Q(location__icontains=search_req) |
+                Q(caption__icontains=search_req)
+            ).all()
+            posts_count = posts.count()
+            users_count = 0
+            users = None
+        else:
+            users = User.objects.filter(
+                Q(username__icontains=search_req)
+            )
+            users_count = users.count()
+            posts_count = 0
+            posts = None
         # todo Make a search request for posts with a location/user/caption that matches the str
         is_req_empty = False
-    context = {'title': title}
+    context = {'title': title, 'posts_results': posts, 'users_results': users, 'posts_count': posts_count,
+               'users_count': users_count, "is_req_empty": is_req_empty, 'filter': search_filter, 'search_str': search_req}
     return render(request, 'insta/search.html', context)
 
 
 @login_required(login_url='/login')
 def profile(request, uid):
-    # todo Get title of page from the user details
-    my_range = range(0, 9)
-    context = {"title": "placeholder", 'my_range':my_range}
+    posts = Post.objects.filter(Q(user__id=request.user.id)).all()
+    profile_info = Profile.objects.get(user__id=request.user.id)
+    user_info = User.objects.get(user__id=request.user.id)
+    context = {"title": user_info.username, 'posts': posts, 'profile_info': profile_info, 'user_info': user_info}
+    return render(request, 'insta/profile.html', context)
+
+
+@login_required(login_url='/login')
+def user_page(request):
+    posts = Post.objects.filter(user__id=request.user.id).all()
+    profile_info = Profile.objects.filter(user__id=request.user.id)
+    user_info = User.objects.filter(id=request.user.id).first()
+    context = {"title": user_info.username, 'posts': posts, 'profile_info': profile_info, 'user_info': user_info}
     return render(request, 'insta/profile.html', context)
 
 
@@ -76,7 +111,6 @@ def login_page(request):
         password = request.POST.get('password_field')
         # Checking if the user exists
         try:
-            user = User.objects.get(username=username)
             # The authenticate fun below will either return a user obj. tha matches the cred.s we've provides or None
             user = authenticate(request, username=username, password=password)
             if user is not None:
@@ -129,8 +163,8 @@ def register_page(request):
             Profile.objects.create(user=new_user, bio='', website='')
             # Once the user has been logged in successfully we wanna redirect them to the home page
             print("The creation was successful")
-            print("The creation was nott successful")
-            messages.error(request, "The username and password don't match")
+            return redirect('/login')
+            # messages.error(request, "The username and password don't match")
 
     context = {'title': "Register", 'auth_req': auth_req}
     return render(request, 'insta/login_register.html', context)

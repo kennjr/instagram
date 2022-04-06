@@ -1,7 +1,7 @@
 <div class="profile_navbar_container">
     <div class="profile_nav_left_opts">
-        <img src="/static/insta/images/ic_arrow_back.svg" alt="Navigate back to previous page">
-        <p id="profile_navbar_username_txt">kennjr</p>
+        <img src="/static/insta/images/ic_arrow_back.svg" alt="Navigate back to previous page" onclick="window.location.href='/'">
+        <p id="profile_navbar_username_txt">{{user_info.username}}</p>
     </div>
     <button type="submit" onclick="window.location.href='{% url 'new_post' %}'">New Post</button>
 </div>
