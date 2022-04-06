@@ -45,6 +45,32 @@ class Post(models.Model):
     def __str__(self):
         return f'{self.user}'
 
+    def save_post(self):
+        return self.save()
+
+    @classmethod
+    def get_all_posts(cls):
+        return cls.objects.order_by("location")
+
+    @classmethod
+    def delete_post(cls, id):
+        return cls.objects.filter(id=id).delete()
+
+    @classmethod
+    def get_post_by_id(cls, id):
+        return cls.objects.filter(id=id).all()
+
+    @classmethod
+    def search_posts_by_creator_id(cls, creator_id):
+        search_results = cls.objects.filter(user__id=creator_id).all()
+        return search_results
+
+    @classmethod
+    def filter_by_location(cls, location_str):
+        filter_results = cls.objects.filter(location__icontains=location_str).all()
+        return filter_results
+
+
 
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
