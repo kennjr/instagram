@@ -188,5 +188,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_URL = '/files/'
 
 django_heroku.settings(locals())
-MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'app/uploads/')
 MEDIA_URL = '/files/'
