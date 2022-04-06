@@ -12,4 +12,5 @@ urlpatterns = [
     path('users/<int:uid>/', views.profile, name='profile'),
     path('user/', views.user_page, name='user'),
     path('new_post/', views.new_post, name='new_post')
+    # path('new_post/', PostCreateView.as_view(), name='new_post'),
 ]

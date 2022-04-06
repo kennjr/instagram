@@ -8,7 +8,7 @@ from insta.models import Profile, Post
 class PostAdmin(admin.ModelAdmin):
     # The line below will allow us to display the meetup obj items in a list with the specified columns
     # the columnnames in the models are what we've used in the strs
-    list_display = ('image_url', 'caption', 'created')
+    list_display = ('caption', 'created')
     # The line below will allow us to have filter opts for our list of entries that appear in the admin dash
     list_filter = ('created',)
     # The line below will pre-populate the slug field based on the title we enter,

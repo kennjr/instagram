@@ -33,7 +33,8 @@ class Profile(models.Model):
 class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     local_user = models.ForeignKey(LocalUser, on_delete=models.CASCADE, null=True)
-    image_url = models.TextField(blank=False, null=False)
+    image_url = models.TextField(blank=False, null=True)
+    # image = CloudinaryField('uploads/', null=True, blank=False)
     caption = models.CharField(max_length=199, blank=True)
     location = models.CharField(max_length=99, blank=True)
     # The auto_now is updated every time a model item is updated/saved with new changes

@@ -10,9 +10,18 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 import django_heroku
 import dj_database_url
 from decouple import config, Csv
+
+cloudinary.config(
+    cloud_name='dnbgrq9az',
+    api_key='842551794271811',
+    api_secret='eLLTaaYDGFMGFP-SoOwvhVpzru4'
+)
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'insta.apps.InstaConfig'
+    'insta.apps.InstaConfig',
+    'cloudinary',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -171,7 +182,7 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 STATIC_URL = 'static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -188,5 +199,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # MEDIA_URL = '/files/'
 
 django_heroku.settings(locals())
-MEDIA_ROOT = os.path.join(BASE_DIR, 'app/uploads/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads/')
 MEDIA_URL = '/files/'

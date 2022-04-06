@@ -12,6 +12,8 @@ django-heroku = "*"
 dj-database-url = "*"
 python-decouple = "*"
 gunicorn = "*"
+cloudinary = "*"
+django-crispy-forms = "*"
 
 [dev-packages]
 

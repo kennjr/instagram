@@ -1,9 +1,11 @@
 from django.contrib import messages
-from django.contrib.auth import login, authenticate, logout, get_user
+from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
 from django.db.models import Q
 from django.shortcuts import render, redirect
+from .models import Post
+# from .forms import UploadForm
 
 
 # Create your views here.
@@ -41,6 +43,27 @@ def new_post(request):
         return redirect('/')
     context = {"title": 'New Post'}
     return render(request, 'insta/follow_msg.html', context)
+
+#
+# '''
+# class Based view
+# '''
+#
+#
+# class PostCreateView(LoginRequiredMixin, CreateView):
+#     model = Post
+#     template_name = 'insta/new_post.html'
+#     fields = ['image', 'caption', 'location' ]
+#
+#     def form_valid(self, form):
+#         form.instance.user = self.request.user
+#         form.save()
+#         return super(PostCreateView, self).form_valid(form)
+#
+#     def get_success_url(self):
+#         return redirect('/index.html')
+
+#
 
 
 @login_required(login_url='/login')
@@ -82,7 +105,7 @@ def search(request):
 
 
 @login_required(login_url='/login')
-def profile(request, uid):
+def profile(request):
     posts = Post.objects.filter(Q(user__id=request.user.id)).all()
     profile_info = Profile.objects.get(user__id=request.user.id)
     user_info = User.objects.get(user__id=request.user.id)
