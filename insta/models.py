@@ -15,6 +15,26 @@ class LocalUser(models.Model):
     def __str__(self):
         return f'{self.name} (@{self.user})'
 
+    def save_local_user(self):
+        return self.save()
+
+    @classmethod
+    def get_all_local_users(cls):
+        return cls.objects.all()
+
+    @classmethod
+    def delete_local_user(cls, id):
+        return cls.objects.filter(id=id).delete()
+
+    @classmethod
+    def get_local_user_by_id(cls, id):
+        return cls.objects.filter(id=id).all()
+
+    @classmethod
+    def filter_local_user_by_name(cls, name):
+        search_results = cls.objects.filter(name=name).all()
+        return search_results
+
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -28,6 +48,26 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user}'
+
+    def save_profile(self):
+        return self.save()
+
+    @classmethod
+    def get_all_profiles(cls):
+        return cls.objects.all()
+
+    @classmethod
+    def delete_profile(cls, id):
+        return cls.objects.filter(id=id).delete()
+
+    @classmethod
+    def get_profile_by_id(cls, id):
+        return cls.objects.filter(id=id).all()
+
+    @classmethod
+    def search_profile_by_website(cls, website):
+        search_results = cls.objects.filter(website=website).all()
+        return search_results
 
 
 class Post(models.Model):
@@ -71,7 +111,6 @@ class Post(models.Model):
         return filter_results
 
 
-
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -82,6 +121,30 @@ class Like(models.Model):
 
     def __str__(self):
         return f'{self.user}'
+
+    def add_like(self):
+        return self.save()
+
+    @classmethod
+    def get_all_likes(cls):
+        return cls.objects.all()
+
+    @classmethod
+    def delete_like(cls, id):
+        return cls.objects.filter(id=id).delete()
+
+    @classmethod
+    def get_like_by_id(cls, id):
+        return cls.objects.filter(id=id).all()
+
+    @classmethod
+    def get_like_by_user_id(cls, id):
+        return cls.objects.filter(user__id=id).all()
+
+    @classmethod
+    def filter_likes_by_post_id(cls, post_id):
+        filter_results = cls.objects.filter(post__id=post_id).all()
+        return filter_results
 
 
 # # Create your models here.
