@@ -11,7 +11,7 @@ The app allows users to share content through images, they've got to be authenti
 * Open the cloned project on your text-editor
 * Run the manage.py file
 
-##Features
+## Features
 - PostgreSql database
 - Fully functioning authentication system
 - Users can post and view images
